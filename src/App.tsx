@@ -45,13 +45,6 @@ function App() {
   //Значение задачи, привязаное к инпуту
   const [task,setTask]=useState('') 
   
-  /* //Какая сейчас тема
-  const [theme,setTheme] = useState(true)
-
-  //Метод смены темы
-  const changeTheme = () => {
-    setTheme(!theme)
-  } */
 
   //Метод добавление новой задачи
   const addHandler = () => {
