@@ -60,10 +60,9 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
                     </button>
                 </div>
             :
-                <div 
-                    className={stylesForInputDiv}>
-                    <div className=' w-2/3'>
-                        <div className="flex align-center ">
+                <div className={stylesForInputDiv}>
+                    <div className=' w-3/4'>
+                        <div className="flex">
                             <input type="checkbox" className="h-4 w-4 border transition duration-200 my-1 cursor-pointer " onChange={()=>setDone(!done)} />
                             <textarea ref={textareaRef} readOnly  className={done ? stylesForTextarea  + ' line-through' :stylesForTextarea} >{data.data}</textarea>
                         </div>
@@ -74,12 +73,12 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
                     </div>
                     {allowChange
                     ?
-                    <div>
-                        <button className={stylesForButton}
-                        onClick={()=>{setRename(true)}}>
+                    <div className='w-1/4 flex items-center justify-around'>
+                        <button className={stylesForButton + ' ml-5'}
+                            onClick={()=>{setRename(true)}}>
                             {themeData.theme ? renameWhiteSVG : renameBlackSVG}
                         </button>
-                        <button className={stylesForButton + " ml-10"} onClick={()=>{deleteItem(data.key)}}>
+                        <button className={stylesForButton  } onClick={()=>{deleteItem(data.key)}}>
                             {themeData.theme ? garbageWhiteSVG : garbageBlackSVG}
                         </button>
                     </div>
