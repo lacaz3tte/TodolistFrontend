@@ -25,7 +25,6 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const textareaRef2 = useRef<HTMLTextAreaElement | null>(null);
     
-    const [done, setDone] = useState(false)
     const [rename, setRename] = useState(false)
     const [renameValue,setRenameValue] = useState(data.data)
 
@@ -63,8 +62,7 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
                 <div className={stylesForInputDiv}>
                     <div className=' w-3/4'>
                         <div className="flex">
-                            <input type="checkbox" className="h-4 w-4 border transition duration-200 my-1 cursor-pointer " onChange={()=>setDone(!done)} />
-                            <textarea ref={textareaRef} readOnly  className={done ? stylesForTextarea  + ' line-through' :stylesForTextarea} >{data.data}</textarea>
+                            <textarea ref={textareaRef} readOnly  className={stylesForTextarea} >{data.data}</textarea>
                         </div>
                         <div className='text-xs pl-3 pt-2 '>
                             <p>Written: {getDate(data.date)}</p>

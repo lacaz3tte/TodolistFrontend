@@ -40,7 +40,6 @@ export const ListsRoster = ({showModalWindow,downloadTasks,pages,showList,delete
             <button onClick={()=>toggle()} className={stylesForButton + ' ml-5 mt-5 '  }>
                 {themeData.theme?lightMenuButton:darkMenuButton}
             </button>    
-            {/* <div className={'fixed left-0 right-0 bottom-0 top-0 ' + animation[1] } onClick={()=>toggle()}></div> */}
             <div className={' transform absolute mt-5 left-1/4 -translate-x-full border rounded-md w-2/12 duration-1000 ' + animation[0] }>
                 <p>
                     <button onClick={()=>{
@@ -55,12 +54,3 @@ export const ListsRoster = ({showModalWindow,downloadTasks,pages,showList,delete
         </>
     )
 }
-
-{/* <div className='fixed left-0 right-0 bottom-0 top-0 bg-slate-300/50' onClick={()=>toggle(false)}></div> */}
-
-/* const toggle = () => {
-    animation ===' top-0'
-    ?(setAnimation(' -top-full'), setBackground(' block'))
-    :( setAnimation(' top-0'),setBackground(' hidden'))
-
-} */

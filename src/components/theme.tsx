@@ -20,8 +20,8 @@ export const Theme = () => {
 
     return(
         <>
-            <button className="bg-transparent border-white dark:border-black  fixed top-8 right-10 rounded-full p-2 border-solid 
-            border-2 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors duration-300" 
+            <button className="bg-transparent  fixed top-8 right-10 rounded-full p-2 border-none 
+           hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors duration-300 dark:text-white" 
             onClick={()=>change()}>
                 {themeData.theme===true?lightThemeSVG:darkThemeSVG}
             </button>
