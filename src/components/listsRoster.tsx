@@ -3,9 +3,8 @@ import { useState } from 'react';
 import { IPage } from '../interfaces/pageInterface';
 import { ITransfer } from "../interfaces/transferInterface"
 import { stylesForButton } from "../styles/styles"
-import { darkMenuButton, lightMenuButton } from '../svg/svg';
+import { MenuButton } from '../svg/svg';
 import { List } from './List';
-import { useTheme } from './themeContext';
 
 
 interface IData {
@@ -23,8 +22,6 @@ export const ListsRoster = ({showModalWindow,downloadTasks,pages,showList,delete
 
     const [animation,setAnimation] = useState([' -top-full', ' hidden'])
 
-    const themeData = useTheme()
-
     const toggle = () => {
         
         animation[0] ===' -top-full'
@@ -38,7 +35,7 @@ export const ListsRoster = ({showModalWindow,downloadTasks,pages,showList,delete
     return(
         <>
             <button onClick={()=>toggle()} className={stylesForButton + ' ml-5 mt-5 '  }>
-                {themeData.theme?lightMenuButton:darkMenuButton}
+                {MenuButton}
             </button>    
             <div className={' transform absolute mt-5 left-1/4 -translate-x-full border rounded-md w-2/12 duration-1000 ' + animation[0] }>
                 <p>

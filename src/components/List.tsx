@@ -2,8 +2,7 @@
 import { IPage } from '../interfaces/pageInterface';
 import { ITransfer } from "../interfaces/transferInterface"
 import { stylesForButton} from "../styles/styles"
-import { garbageBlackSVG, garbageWhiteSVG } from '../svg/svg';
-import { useTheme } from './themeContext';
+import { garbageSVG } from '../svg/svg';
 
 
 interface IData {
@@ -17,9 +16,6 @@ interface IData {
 
 export const List = ({pages,showList,deleteList,changeAllow,changeKey}:IData) => {
 
-    const themeData = useTheme()
-
-    
     return(
         <>
             {pages.map((e)=>{
@@ -33,9 +29,7 @@ export const List = ({pages,showList,deleteList,changeAllow,changeKey}:IData) =>
                         <button onClick={()=>{
                             deleteList(e)
                         }} className={stylesForButton + ' m-3' } >
-                            {
-                                themeData.theme?garbageWhiteSVG:garbageBlackSVG
-                            }
+                            {garbageSVG}
                         </button>
                     </div>
             )

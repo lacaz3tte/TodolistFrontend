@@ -8,8 +8,6 @@ import { ITransfer } from './interfaces/transferInterface';
 import { IPage } from './interfaces/pageInterface';
 import { ListsRoster } from './components/listsRoster';
 import { ListModal } from './components/listModal';
-import { ThemeProvider } from './components/themeContext';
-
 function App() {
   
   //Задачи, выводимые на экран в данный момент
@@ -239,7 +237,6 @@ function App() {
 
 
   return (
-    <ThemeProvider>
     <div className='w-1/2 m-auto ' >
       <ListsRoster deleteList={deleteList} downloadTasks={downloadTasks} pages={pages} changeKey={changeKey}
       showList={showList} showModalWindow={showModalWindow} changeAllow={changeAllow}></ListsRoster>
@@ -253,7 +250,6 @@ function App() {
       </Reorder.Group>
       <Theme />
     </div>
-    </ThemeProvider>
   );
 }
 

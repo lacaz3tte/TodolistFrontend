@@ -1,10 +1,9 @@
 
 import { Reorder } from 'framer-motion' 
 import { stylesForButton, stylesForInputDiv, stylesForInputText, stylesForTextarea } from "../styles/styles"
-import {  acceptBlackSVG, acceptWhiteSVG, garbageBlackSVG, garbageWhiteSVG, renameBlackSVG, renameWhiteSVG } from "../svg/svg"
+import {  acceptSVG, garbageSVG, renameSVG } from "../svg/svg"
 import { useState, useRef, useEffect } from "react"
 import { ITransfer } from "../interfaces/transferInterface"
-import { useTheme } from './themeContext'
 
 interface IData {
     data : ITransfer,
@@ -15,8 +14,6 @@ interface IData {
 }
 
 export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) => {
-
-    const themeData = useTheme()
 
     const getDate = (date:number)=>{
         return new Date(date).toDateString()
@@ -55,7 +52,7 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
                             renameItem(renameValue,data.key) 
                             setRename(false)
                         }}>
-                        {themeData.theme ? acceptWhiteSVG : acceptBlackSVG}
+                        {acceptSVG}
                     </button>
                 </div>
             :
@@ -74,10 +71,10 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
                     <div className='w-1/4 flex items-center justify-around'>
                         <button className={stylesForButton + ' ml-5'}
                             onClick={()=>{setRename(true)}}>
-                            {themeData.theme ? renameWhiteSVG : renameBlackSVG}
+                            {renameSVG}
                         </button>
                         <button className={stylesForButton  } onClick={()=>{deleteItem(data.key)}}>
-                            {themeData.theme ? garbageWhiteSVG : garbageBlackSVG}
+                            {garbageSVG}
                         </button>
                     </div>
                     :
