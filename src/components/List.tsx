@@ -1,7 +1,7 @@
 
 import { IPage } from '../interfaces/pageInterface';
 import { ITransfer } from "../interfaces/transferInterface"
-import { stylesForButton} from "../styles/styles"
+import { stylesForButton, stylesForRoundedButton} from "../styles/styles"
 import { garbageSVG } from '../svg/svg';
 
 
@@ -25,10 +25,8 @@ export const List = ({pages,showList,deleteList,changeAllow,changeKey}:IData) =>
                             showList(e.pages)
                             changeAllow(false)
                             changeKey([e.key.toString(),e.name])
-                        }} className={stylesForButton + ' m-3' }>{e.name}</button>
-                        <button onClick={()=>{
-                            deleteList(e)
-                        }} className={stylesForButton + ' m-3' } >
+                        }} className={stylesForButton + ' m-3 ' }>{e.name}</button>
+                        <button onClick={()=>{deleteList(e)}} className={stylesForRoundedButton + ' m-3' } >
                             {garbageSVG}
                         </button>
                     </div>

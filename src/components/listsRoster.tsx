@@ -2,12 +2,13 @@
 import { useState } from 'react';
 import { IPage } from '../interfaces/pageInterface';
 import { ITransfer } from "../interfaces/transferInterface"
-import { stylesForButton } from "../styles/styles"
-import { MenuButton } from '../svg/svg';
+import { stylesForRoundedButton,stylesForButton, stylesForDiv } from "../styles/styles"
+import { cancelButton, MenuButton } from '../svg/svg';
 import { List } from './List';
 
 
 interface IData {
+    allowChange:boolean
     downloadTasks:Array<ITransfer>
     pages:Array<IPage>
     showModalWindow:(e:boolean)=>void
@@ -18,7 +19,7 @@ interface IData {
 }
 
 
-export const ListsRoster = ({showModalWindow,downloadTasks,pages,showList,deleteList,changeAllow,changeKey}:IData) => {
+export const ListsRoster = ({showModalWindow,downloadTasks,pages,showList,deleteList,changeAllow,changeKey,allowChange}:IData) => {
 
     const [animation,setAnimation] = useState([' -top-full', ' hidden'])
 
@@ -31,18 +32,24 @@ export const ListsRoster = ({showModalWindow,downloadTasks,pages,showList,delete
             setAnimation([' -top-full', ' hidden'])
     }
 
+    const cancel = () => {
+        showList(downloadTasks)
+        changeAllow(true)
+    }
+
     
     return(
         <>
-            <button onClick={()=>toggle()} className={stylesForButton + ' ml-5 mt-5 '  }>
+            <button onClick={()=>toggle()} className={stylesForRoundedButton + '  ml-5 mt-5 '  }>
                 {MenuButton}
-            </button>    
-            <div className={' transform absolute mt-5 left-1/4 -translate-x-full border rounded-md w-2/12 duration-1000 ' + animation[0] }>
+            </button>
+            {allowChange?
+                <></>:
+                <button className={stylesForRoundedButton + "ml-5"} onClick={()=>cancel()}>{cancelButton}</button>
+            }
+            <div className={' transform absolute mt-5 left-1/4 -translate-x-full border rounded-md w-2/12 duration-1000 ' + stylesForDiv + animation[0] }>
                 <p>
-                    <button onClick={()=>{
-                        showList(downloadTasks)
-                        changeAllow(true)
-                    }} className={stylesForButton + ' m-3' }>All tasks</button>
+                    <button onClick={()=>cancel()} className={stylesForButton + ' m-3' }>All tasks</button>
                 </p>
                 <List deleteList={deleteList} showList={showList} pages={pages} changeAllow={changeAllow} changeKey={changeKey}></List>
                 <button onClick={()=>{showModalWindow(true)}} className={stylesForButton + ' m-3' }>Add new list</button>

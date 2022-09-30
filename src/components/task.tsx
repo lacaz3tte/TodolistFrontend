@@ -1,6 +1,6 @@
 
 import { Reorder } from 'framer-motion' 
-import { stylesForButton, stylesForInputDiv, stylesForInputText, stylesForTextarea } from "../styles/styles"
+import { stylesForButton, stylesForTaskDiv, stylesForInputText, stylesForTextarea, stylesForRoundedButton } from "../styles/styles"
 import {  acceptSVG, garbageSVG, renameSVG } from "../svg/svg"
 import { useState, useRef, useEffect } from "react"
 import { ITransfer } from "../interfaces/transferInterface"
@@ -40,7 +40,7 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
         <Reorder.Item value={data} id={data.data} onDragEnd={onDragEnd}>
             {rename  
             ?    
-                <div className={ stylesForInputDiv  }>
+                <div className={ stylesForTaskDiv }>
                     <textarea autoFocus
                         ref={ textareaRef2 }
                         className = { stylesForInputText + ' overflow-hidden resize-none outline-none hover:cursor-pointer ml-5' } 
@@ -56,7 +56,7 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
                     </button>
                 </div>
             :
-                <div className={stylesForInputDiv}>
+                <div className={stylesForTaskDiv}>
                     <div className=' w-3/4'>
                         <div className="flex">
                             <textarea ref={textareaRef} readOnly  className={stylesForTextarea} >{data.data}</textarea>
@@ -69,11 +69,11 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
                     {allowChange
                     ?
                     <div className='w-1/4 flex items-center justify-around'>
-                        <button className={stylesForButton + ' ml-5'}
+                        <button className={stylesForRoundedButton + ' ml-5'}
                             onClick={()=>{setRename(true)}}>
                             {renameSVG}
                         </button>
-                        <button className={stylesForButton  } onClick={()=>{deleteItem(data.key)}}>
+                        <button className={stylesForRoundedButton  } onClick={()=>{deleteItem(data.key)}}>
                             {garbageSVG}
                         </button>
                     </div>

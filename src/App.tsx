@@ -239,7 +239,7 @@ function App() {
   return (
     <div className='w-1/2 m-auto ' >
       <ListsRoster deleteList={deleteList} downloadTasks={downloadTasks} pages={pages} changeKey={changeKey}
-      showList={showList} showModalWindow={showModalWindow} changeAllow={changeAllow}></ListsRoster>
+      showList={showList} showModalWindow={showModalWindow} changeAllow={changeAllow} allowChange={allowChange}></ListsRoster>
       <ListModal addList={addList} addNameofPage={addNameofPage} addPage={addPage} addTask={addTask} 
         deleteTask={deleteTask} downloadTasks={downloadTasks} nameofPage={nameofPage} showModalWindow={showModalWindow}></ListModal>
       <AddTask enterTask={enterTask} value={task} addHandler={addHandler} allowChange={allowChange} />

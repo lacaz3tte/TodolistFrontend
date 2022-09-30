@@ -1,4 +1,4 @@
-import { stylesForButton, stylesForInputDiv, stylesForInputText, } from "../styles/styles"
+import { stylesForButton, stylesForTaskDiv, stylesForInputText, } from "../styles/styles"
 import {useRef, useEffect} from 'react'
 
 interface IEnterData {
@@ -23,7 +23,7 @@ export const AddTask = ({enterTask, value, addHandler,allowChange}:IEnterData) =
     return (
       allowChange
       ?
-      <div className={stylesForInputDiv } >
+      <div className={stylesForTaskDiv} >
         <textarea 
           ref={textareaRef}
           value={value}
