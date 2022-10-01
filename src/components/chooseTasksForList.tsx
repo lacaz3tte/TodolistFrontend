@@ -23,10 +23,10 @@ export const ChooseTaskForList = ({addTask,deleteTask,e}:IData) => {
 
     return(
     <div className={" duration-500 flex items-center justify-between bg-transparent m-5" }>
-        <div className={added?' text-green-600':' text-red-600'}>
-            {added?acceptSVG:cancelButton}
+        <div className={added?' text-teal-500':' '}>
+            {added&&acceptSVG}
         </div>
-        <p className='w-1/2 overflow-hidden text-ellipsis inline-block'>
+        <p className='w-1/2 overflow-hidden text-ellipsis inline-block text-left'>
             {e.data}
         </p>
         <div>
