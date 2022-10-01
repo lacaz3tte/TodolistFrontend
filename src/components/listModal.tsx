@@ -1,5 +1,4 @@
-import { useState} from 'react';
-import { IPage } from '../interfaces/pageInterface';
+
 import { ITransfer } from "../interfaces/transferInterface"
 import { stylesForButton,  stylesForDiv,  stylesForInputText } from "../styles/styles"
 import {ChooseTaskForList} from "./chooseTasksForList"
@@ -35,7 +34,7 @@ export const ListModal = ({addPage,downloadTasks,nameofPage,showModalWindow,addT
                     {downloadTasks.map((e)=>{return(
                         <ChooseTaskForList addTask={addTask} deleteTask={deleteTask} e={e}></ChooseTaskForList>
                     )})}
-                    <button className={stylesForButton} onClick={()=>addList()}>Add list</button>
+                    <button className={stylesForButton + " font-medium text-lg"} onClick={()=>addList()}>Add list</button>
                 </div>
             </div> 
             :

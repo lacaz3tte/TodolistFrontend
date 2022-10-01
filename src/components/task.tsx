@@ -47,7 +47,7 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
                         value = { renameValue } 
                         onChange = { e => {setRenameValue(e.target.value)}}>
                     </textarea>
-                    <button className={stylesForButton} 
+                    <button className={stylesForRoundedButton} 
                         onClick={()=>{
                             renameItem(renameValue,data.key) 
                             setRename(false)

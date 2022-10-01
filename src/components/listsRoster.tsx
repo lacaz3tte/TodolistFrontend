@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { IPage } from '../interfaces/pageInterface';
 import { ITransfer } from "../interfaces/transferInterface"
 import { stylesForRoundedButton,stylesForButton, stylesForDiv } from "../styles/styles"
-import { cancelButton, MenuButton } from '../svg/svg';
+import { cancelButton, menuButton } from '../svg/svg';
 import { List } from './List';
 
 
@@ -41,7 +41,7 @@ export const ListsRoster = ({showModalWindow,downloadTasks,pages,showList,delete
     return(
         <>
             <button onClick={()=>toggle()} className={stylesForRoundedButton + '  ml-5 mt-5 '  }>
-                {MenuButton}
+                {menuButton}
             </button>
             {allowChange?
                 <></>:
