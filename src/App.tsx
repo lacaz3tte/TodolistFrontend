@@ -8,6 +8,7 @@ import { ITransfer } from './interfaces/transferInterface';
 import { IPage } from './interfaces/pageInterface';
 import { ListsRoster } from './components/listsRoster';
 import { ListModal } from './components/listModal';
+import { Buttons } from './components/buttons';
 function App() {
   
   //Задачи, выводимые на экран в данный момент
@@ -235,11 +236,19 @@ function App() {
     setAllowChange(e)
   }
 
+  //Показ списка списков
+  const [showListRoster,setShowListRoster]= useState(true)
+
+  const changeVisibleofListRoster = () => {
+    setShowListRoster(!showListRoster)
+  }
+
 
   return (
     <div className='w-1/2 m-auto ' >
+      <Buttons allowChange={allowChange} downloadTasks={downloadTasks} changeAllow={changeAllow} showList={showList} changeVisibleofListRoster={changeVisibleofListRoster}></Buttons>
       <ListsRoster deleteList={deleteList} downloadTasks={downloadTasks} pages={pages} changeKey={changeKey}
-      showList={showList} showModalWindow={showModalWindow} changeAllow={changeAllow} allowChange={allowChange}></ListsRoster>
+      showList={showList} showModalWindow={showModalWindow} changeAllow={changeAllow} showListRoster={showListRoster}></ListsRoster>
       <ListModal addList={addList} addNameofPage={addNameofPage} addPage={addPage} addTask={addTask} 
         deleteTask={deleteTask} downloadTasks={downloadTasks} nameofPage={nameofPage} showModalWindow={showModalWindow}></ListModal>
       <AddTask enterTask={enterTask} value={task} addHandler={addHandler} allowChange={allowChange} />

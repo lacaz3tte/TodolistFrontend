@@ -1,0 +1,34 @@
+
+import { ITransfer } from "../interfaces/transferInterface"
+import { stylesForRoundedButton} from "../styles/styles"
+import { cancelButton, menuButton } from '../svg/svg';
+
+
+interface IData {
+    allowChange:boolean
+    downloadTasks:Array<ITransfer>
+    showList:(list:Array<ITransfer>)=>void
+    changeAllow:(e:boolean)=>void
+    changeVisibleofListRoster: () => void
+}
+
+
+export const Buttons = ({downloadTasks,showList,changeAllow,allowChange,changeVisibleofListRoster}:IData) => {
+
+    const cancel = () => {
+        showList(downloadTasks)
+        changeAllow(true)
+    }
+
+    return(
+        <>
+            <button onClick={()=>{changeVisibleofListRoster()}} className={stylesForRoundedButton + ' ml-5 mt-5 '  }>
+                {menuButton}
+            </button>
+            {allowChange?
+                <></>:
+                <button className={stylesForRoundedButton + "ml-5"} onClick={()=>cancel()}>{cancelButton}</button>
+            }
+        </>
+    )
+}

@@ -1,14 +1,13 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IPage } from '../interfaces/pageInterface';
 import { ITransfer } from "../interfaces/transferInterface"
-import { stylesForRoundedButton,stylesForButton, stylesForDiv } from "../styles/styles"
-import { cancelButton, menuButton } from '../svg/svg';
+import { stylesForButton, stylesForDiv, stylesForListDiv } from "../styles/styles"
 import { List } from './List';
 
 
 interface IData {
-    allowChange:boolean
+    showListRoster:boolean
     downloadTasks:Array<ITransfer>
     pages:Array<IPage>
     showModalWindow:(e:boolean)=>void
@@ -19,35 +18,16 @@ interface IData {
 }
 
 
-export const ListsRoster = ({showModalWindow,downloadTasks,pages,showList,deleteList,changeAllow,changeKey,allowChange}:IData) => {
-
-    const [animation,setAnimation] = useState([' -top-full', ' hidden'])
-
-    const toggle = () => {
-        
-        animation[0] ===' -top-full'
-        ?
-            setAnimation([' top-0', ' block'])
-        : 
-            setAnimation([' -top-full', ' hidden'])
-    }
+export const ListsRoster = ({showModalWindow,downloadTasks,pages,showList,deleteList,changeAllow,changeKey,showListRoster}:IData) => {
 
     const cancel = () => {
         showList(downloadTasks)
         changeAllow(true)
     }
-
     
     return(
         <>
-            <button onClick={()=>toggle()} className={stylesForRoundedButton + '  ml-5 mt-5 '  }>
-                {menuButton}
-            </button>
-            {allowChange?
-                <></>:
-                <button className={stylesForRoundedButton + "ml-5"} onClick={()=>cancel()}>{cancelButton}</button>
-            }
-            <div className={' transform absolute mt-5 left-1/4 -translate-x-full border rounded-md w-2/12 duration-1000 ' + stylesForDiv + animation[0] }>
+            <div className={ showListRoster?stylesForListDiv + ' -top-full': stylesForListDiv + ' top-0'}>
                 <p>
                     <button onClick={()=>cancel()} className={stylesForButton + ' m-3' }>All tasks</button>
                 </p>
