@@ -27,7 +27,7 @@ export const AddTask = ({enterTask, value, addHandler,allowChange}:IEnterData) =
         <textarea 
           ref={textareaRef}
           value={value}
-          className={stylesForInputText + ' resize-none overflow-hidden h-10 ' }
+          className={stylesForInputText + ' resize-none overflow-hidden h-9 ' }
           placeholder="Enter your task..." 
           onChange={(e)=>{enterTask(e.target.value)}}>
         </textarea>

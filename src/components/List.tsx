@@ -20,7 +20,7 @@ export const List = ({pages,showList,deleteList,changeAllow,changeKey}:IData) =>
         <>
             {pages.map((e)=>{
                 return(
-                    <div className= ' flex justify-between'>
+                    <div className= ' flex justify-between border-b-2 border-y-slate-300 dark:border-y-slate-700 m-3'>
                         <button onClick={()=>{
                             showList(e.pages)
                             changeAllow(false)

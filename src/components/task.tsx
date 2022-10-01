@@ -56,12 +56,12 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
                     </button>
                 </div>
             :
-                <div className={stylesForTaskDiv}>
+                <div className={stylesForTaskDiv + ' cursor-pointer'}>
                     <div className=' w-3/4'>
                         <div className="flex">
                             <textarea ref={textareaRef} readOnly  className={stylesForTextarea} >{data.data}</textarea>
                         </div>
-                        <div className='text-xs pl-3 pt-2 '>
+                        <div className='text-xs pl-3 pt-2 text-slate-300 dark:text-slate-500 '>
                             <p>Written: {getDate(data.date)}</p>
                             <p>{ data.updated!==-1 && 'Updated: ' + getDate(data.updated) }</p>
                         </div>
