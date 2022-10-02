@@ -9,6 +9,7 @@ import { IPage } from './interfaces/pageInterface';
 import { ListsRoster } from './components/listsRoster';
 import { ListModal } from './components/listModal';
 import { Buttons } from './components/buttons';
+import { TaskModal } from './components/taskModal';
 function App() {
   
   //Задачи, выводимые на экран в данный момент
@@ -243,15 +244,23 @@ function App() {
     setShowListRoster(!showListRoster)
   }
 
+  //Показ модалки ввода задачи
+  const [showTaskModal,setShowTaskModal] = useState(false)
+
+  const changeVisiableofTaskModal = () => {
+    setShowTaskModal(!showTaskModal)
+  }
+
 
   return (
     <div className='w-1/2 m-auto ' >
-      <Buttons allowChange={allowChange} downloadTasks={downloadTasks} changeAllow={changeAllow} showList={showList} changeVisibleofListRoster={changeVisibleofListRoster}></Buttons>
+      <Buttons allowChange={allowChange} downloadTasks={downloadTasks} changeAllow={changeAllow} 
+      showList={showList} changeVisibleofListRoster={changeVisibleofListRoster} changeVisiableofTaskModal={changeVisiableofTaskModal}></Buttons>
       <ListsRoster deleteList={deleteList} downloadTasks={downloadTasks} pages={pages} changeKey={changeKey}
       showList={showList} showModalWindow={showModalWindow} changeAllow={changeAllow} showListRoster={showListRoster}></ListsRoster>
       <ListModal addList={addList} addNameofPage={addNameofPage} addPage={addPage} addTask={addTask} 
         deleteTask={deleteTask} downloadTasks={downloadTasks} nameofPage={nameofPage} showModalWindow={showModalWindow}></ListModal>
-      <AddTask enterTask={enterTask} value={task} addHandler={addHandler} allowChange={allowChange} />
+      <TaskModal addHandler={addHandler} enterTask={enterTask} value={task} showTaskModal={showTaskModal} changeVisiableofTaskModal={changeVisiableofTaskModal}></TaskModal>
       <Reorder.Group axis="y" onReorder={setTasks} values={tasks}>
         {tasks.map(item=>
               <Task  key={item.key} data={item} deleteItem={onRemove} renameItem={onRename} onDragEnd={onDragEnd} allowChange={allowChange}   />

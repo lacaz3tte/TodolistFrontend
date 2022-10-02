@@ -43,7 +43,7 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
                 <div className={ stylesForTaskDiv }>
                     <textarea autoFocus
                         ref={ textareaRef2 }
-                        className = { stylesForInputText + ' overflow-hidden resize-none outline-none hover:cursor-pointer ml-5' } 
+                        className = { stylesForInputText + ' overflow-hidden resize-none outline-none hover:cursor-pointer ml-5 ' } 
                         value = { renameValue } 
                         onChange = { e => {setRenameValue(e.target.value)}}>
                     </textarea>
@@ -59,7 +59,7 @@ export const Task = ({data,deleteItem,renameItem,onDragEnd,allowChange}:IData) =
                 <div className={stylesForTaskDiv + ' cursor-pointer'}>
                     <div className=' w-3/4'>
                         <div className="flex">
-                            <textarea ref={textareaRef} readOnly  className={stylesForTextarea + ' font-medium text-lg'} >{data.data}</textarea>
+                            <textarea ref={textareaRef} readOnly  className={stylesForTextarea + ' font-medium text-lg border-b-2 border-y-slate-300 dark:border-y-slate-700'} >{data.data}</textarea>
                         </div>
                         <div className='text-xs pl-3 pt-2 text-slate-300 dark:text-slate-500 '>
                             <p>Written: {getDate(data.date)}</p>

@@ -1,11 +1,16 @@
 
 import { useRef, useEffect, useState } from "react";
-import { ITransfer } from "../interfaces/transferInterface"
 import { stylesForButton,  stylesForDiv,  stylesForInputText } from "../styles/styles"
 
+interface IEnterData {
+    enterTask:(value:string)=>void
+    changeVisiableofTaskModal:()=>void
+    addHandler:()=>void
+    value:string
+    showTaskModal:boolean
+}
 
-
-export const TaskModal = () => {
+export const TaskModal = ({enterTask, value, addHandler,showTaskModal,changeVisiableofTaskModal}:IEnterData) => {
 
     const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -18,13 +23,13 @@ export const TaskModal = () => {
         }}, [description]);  
 
     return(
-        <>
-            <div className='fixed left-0 right-0 bottom-0 top-0 bg-black/50'>
+        <>{showTaskModal&&
+            <div className='fixed left-0 right-0 bottom-0 top-0 bg-black/50' onClick={()=>{changeVisiableofTaskModal()}}>
                 <div className={'w-1/2 p-5 rounded-md bg-white absolute top-10 left-1/2 -translate-x-1/2 text-black dark:text-white dark:bg-black border text-center ' 
                     + stylesForDiv}
                     onClick={(e)=>{e.stopPropagation()}}
                 >
-                    <input className={stylesForInputText + ' w-full' } type={'text'} autoFocus placeholder='Header'></input>
+                    <input className={stylesForInputText + ' w-full' } type={'text'} autoFocus placeholder='Header' value={value} onChange={(e)=>{enterTask(e.target.value)}}></input>
                     <textarea
                         ref= {textareaRef}
                         value = {description}
@@ -34,10 +39,14 @@ export const TaskModal = () => {
                     >
                     </textarea>
                     <div>
-                        <button className={stylesForButton + " font-medium text-lg "} >Add task</button>
+                        <button className={stylesForButton + " font-medium text-lg "} 
+                        onClick={()=>{
+                            addHandler()
+                            changeVisiableofTaskModal()
+                        }}>Add task</button>
                     </div>
                 </div>
-            </div> 
+            </div> }
         </>
     )
 }

@@ -1,7 +1,7 @@
 
 import { ITransfer } from "../interfaces/transferInterface"
 import { stylesForRoundedButton} from "../styles/styles"
-import { cancelButton, menuButton } from '../svg/svg';
+import { addButton, cancelButton, menuButton } from '../svg/svg';
 
 
 interface IData {
@@ -10,10 +10,11 @@ interface IData {
     showList:(list:Array<ITransfer>)=>void
     changeAllow:(e:boolean)=>void
     changeVisibleofListRoster: () => void
+    changeVisiableofTaskModal: () => void
 }
 
 
-export const Buttons = ({downloadTasks,showList,changeAllow,allowChange,changeVisibleofListRoster}:IData) => {
+export const Buttons = ({downloadTasks,showList,changeAllow,allowChange,changeVisibleofListRoster,changeVisiableofTaskModal}:IData) => {
 
     const cancel = () => {
         showList(downloadTasks)
@@ -25,9 +26,15 @@ export const Buttons = ({downloadTasks,showList,changeAllow,allowChange,changeVi
             <button onClick={()=>{changeVisibleofListRoster()}} className={stylesForRoundedButton + ' ml-5 mt-5 '  }>
                 {menuButton}
             </button>
-            {allowChange?
-                <></>:
-                <button className={stylesForRoundedButton + "ml-5"} onClick={()=>cancel()}>{cancelButton}</button>
+            {allowChange
+                ?
+                <button onClick={()=>changeVisiableofTaskModal()} className={stylesForRoundedButton + ' ml-5 '  }>
+                    {addButton}
+                </button>
+                :
+                <button className={stylesForRoundedButton + "ml-5"} onClick={()=>cancel()}>
+                    {cancelButton}
+                </button>
             }
         </>
     )
